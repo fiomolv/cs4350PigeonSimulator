@@ -14,8 +14,9 @@ public class Flappy : MonoBehaviour {
     public Rigidbody rightRb;
 
     private float forwardSpeed = 0.1f;
-    private float upSpeed = 20;
-    private float horizontalSpeed = 20;
+    private float upSpeed = 1;
+    private float yaw = 20;
+    private float pitch = 20;
 
     private Vector3 upMovement;
     private Vector3 forwardMovement;
@@ -26,11 +27,13 @@ public class Flappy : MonoBehaviour {
         right = GameObject.Find("Right");
         body = GameObject.Find("Body");
 
+        //camera = body.GetComponent<Camera>();
+
         bodyRb = body.GetComponent<Rigidbody>();
         leftRb = left.GetComponent<Rigidbody>();
         rightRb = right.GetComponent<Rigidbody>();
 
-        Physics.gravity = 0.05f * Vector3.down;
+        Physics.gravity = 0.01f * Vector3.down;
 
         upMovement = upSpeed * Vector3.up;
         forwardMovement = forwardSpeed * Vector3.right;
@@ -52,16 +55,16 @@ public class Flappy : MonoBehaviour {
 
     private void LiftLeft() {
         body.transform.Translate(upMovement * Time.deltaTime);
-        body.transform.Rotate(Vector3.up, horizontalSpeed * Time.deltaTime);
+        body.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
+        body.transform.Rotate(Vector3.right, -pitch * Time.deltaTime);
+        Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
     }
 
     private void LiftRight() {
         body.transform.Translate(upMovement * Time.deltaTime);
-        body.transform.Rotate(Vector3.up, -horizontalSpeed * Time.deltaTime);
-    }
-
-    private void Apply(Vector3 movement) {
-
+        body.transform.Rotate(Vector3.up, -yaw * Time.deltaTime);
+        body.transform.Rotate(Vector3.right, pitch * Time.deltaTime);
+        Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
     }
 
 }

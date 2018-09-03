@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flappy : MonoBehaviour {
+public class Flappy : MonoBehaviour
+{
 
     public GameObject left;
     public GameObject right;
@@ -13,15 +14,20 @@ public class Flappy : MonoBehaviour {
     public Rigidbody leftRb;
     public Rigidbody rightRb;
 
-    private float forwardSpeed = 0.1f;
-    private float upSpeed = 1;
+    private float forwardSpeed = 1f;
     private float yaw = 20;
-    private float pitch = 20;
+    private float pitch = 1000;
+    private float accelResetRate = 0.1f;
+    private float rotationResetRate = 0.002f;
 
-    private Vector3 upMovement;
+    private Vector3 vertAccel;
+    private Vector3 horiAccel;
+    private Vector3 vertAccelChangeRate = 0.5f * Vector3.up;
+    private Vector3 horiAccelChangeRate = 0.2f * Vector3.forward; // Forward was Z
     private Vector3 forwardMovement;
 
-    private void Start() {
+    private void Start()
+    {
 
         left = GameObject.Find("Left");
         right = GameObject.Find("Right");
@@ -33,13 +39,13 @@ public class Flappy : MonoBehaviour {
         leftRb = left.GetComponent<Rigidbody>();
         rightRb = right.GetComponent<Rigidbody>();
 
-        Physics.gravity = 0.01f * Vector3.down;
+        Physics.gravity = 2f * Vector3.down;
 
-        upMovement = upSpeed * Vector3.up;
         forwardMovement = forwardSpeed * Vector3.right;
     }
 
-    private void Update() {
+    private void Update()
+    {
 
         body.transform.Translate(forwardMovement * Time.deltaTime);
 
@@ -50,21 +56,55 @@ public class Flappy : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             // Right
             LiftRight();
-            
+
+        UpdateRotation();
+        UpdatePlayerVelocity();
+        UpdateAccels();
     }
 
-    private void LiftLeft() {
-        body.transform.Translate(upMovement * Time.deltaTime);
+    private void LiftLeft()
+    {
+        vertAccel = vertAccel + vertAccelChangeRate;
+        horiAccel = horiAccel + horiAccelChangeRate;
         body.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
+        body.transform.Rotate(Vector3.right, pitch * Time.deltaTime);
+        Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
+    }
+
+    private void LiftRight()
+    {
+        vertAccel = vertAccel + vertAccelChangeRate;
+        horiAccel = horiAccel - horiAccelChangeRate;
+        body.transform.Rotate(Vector3.up, -yaw * Time.deltaTime);
         body.transform.Rotate(Vector3.right, -pitch * Time.deltaTime);
         Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
     }
 
-    private void LiftRight() {
-        body.transform.Translate(upMovement * Time.deltaTime);
-        body.transform.Rotate(Vector3.up, -yaw * Time.deltaTime);
-        body.transform.Rotate(Vector3.right, pitch * Time.deltaTime);
-        Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
+    private void UpdatePlayerVelocity()
+    {
+        Vector3 compoundAccel = vertAccel + horiAccel;
+        VelocityChange(bodyRb, compoundAccel);
+        VelocityChange(leftRb, compoundAccel);
+        VelocityChange(rightRb, compoundAccel);
+    }
+
+    private void UpdateAccels()
+    {
+        vertAccel = vertAccel * accelResetRate;
+        horiAccel = horiAccel * accelResetRate;
+    }
+
+    private void UpdateRotation()
+    {
+        float rotationValue = pitch * rotationResetRate * (body.transform.rotation.x % 360);
+        body.transform.Rotate(Vector3.right, -rotationValue);
+        Camera.main.transform.Rotate(Vector3.forward, rotationValue);
+    }
+
+    // Helper methods
+    private void VelocityChange(Rigidbody rb, Vector3 accel)
+    {
+        rb.velocity = rb.velocity + accel;
     }
 
 }

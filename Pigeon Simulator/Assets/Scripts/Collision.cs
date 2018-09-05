@@ -12,7 +12,10 @@ public class Collision : MonoBehaviour
 		{
 			Debug.Log("Collision detected!");
 			Debug.Log(col.gameObject.name);
+
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.SetInt("score", (int)(Time.timeSinceLevelLoad * 5));
+
             SceneManager.LoadScene("Death");
         }
 	}

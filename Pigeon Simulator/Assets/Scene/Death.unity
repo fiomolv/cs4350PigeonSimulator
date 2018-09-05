@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: 1323180254}
   - component: {fileID: 1323180256}
   - component: {fileID: 1323180255}
+  - component: {fileID: 1323180257}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1276,7 +1277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Your Score: XXX'
+  m_Text: 'Score: XXX'
 --- !u!222 &1323180256
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1284,6 +1285,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1323180253}
   m_CullTransparentMesh: 0
+--- !u!114 &1323180257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1323180253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3814d4f12571c40dd980156c855f5b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 1323180255}
 --- !u!1 &2045582460
 GameObject:
   m_ObjectHideFlags: 0

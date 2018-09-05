@@ -8,7 +8,9 @@ public class Collision : MonoBehaviour
 
 	void OnCollisionEnter(UnityEngine.Collision col)
 	{
-		if (col.gameObject.name != "Left" && col.gameObject.name != "Right")
+		if (col.gameObject.name != "Left" 
+            && col.gameObject.name != "Right"
+            && col.gameObject.name != "Body")
 		{
 			Debug.Log("Collision detected!");
 			Debug.Log(col.gameObject.name);

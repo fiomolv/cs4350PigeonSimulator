@@ -12,7 +12,8 @@ public class Collision : MonoBehaviour
 		{
 			Debug.Log("Collision detected!");
 			Debug.Log(col.gameObject.name);
-            SceneManager.LoadScene(2);
+            PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Death");
         }
 	}
 

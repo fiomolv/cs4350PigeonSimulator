@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -690,6 +690,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1606203332}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1639152742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1639152744}
+  - component: {fileID: 1639152743}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1639152743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639152742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08028900eace1f14d96145e1fc7e1651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 926416449}
+  enemies:
+  - {fileID: 1142260331504356, guid: c4c6d5486eecece4f91f6353f14dcc9d, type: 2}
+  - {fileID: 1827004940689704, guid: e680df748921a6b4d8f317e5db9a9f6d, type: 2}
+  - {fileID: 1624985346375724, guid: e049617b5e9f4e84bb4aae08d9841969, type: 2}
+  spawnValues: {x: 5, y: 5, z: 5}
+  spawnWait: 0.5
+  spawnMostWait: 0.5
+  spawnLeastWait: 0.1
+  startWait: 0
+  stop: 0
+--- !u!4 &1639152744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639152742}
+  m_LocalRotation: {x: 0.12278779, y: 0.6963643, z: -0.12278779, w: 0.6963643}
+  m_LocalPosition: {x: -2.31, y: 0.69, z: 0}
+  m_LocalScale: {x: 1, y: 1.517679, z: 0.9058773}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1680003588
 GameObject:
   m_ObjectHideFlags: 0

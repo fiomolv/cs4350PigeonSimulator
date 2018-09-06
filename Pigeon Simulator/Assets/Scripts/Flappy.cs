@@ -39,7 +39,7 @@ public class Flappy : MonoBehaviour
         leftRb = left.GetComponent<Rigidbody>();
         rightRb = right.GetComponent<Rigidbody>();
 
-        Physics.gravity = 2f * Vector3.down;
+        Physics.gravity = 4f * Vector3.down;
 
         forwardMovement = forwardSpeed * Vector3.right;
     }

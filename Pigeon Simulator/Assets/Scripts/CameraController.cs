@@ -19,4 +19,9 @@ public class CameraController : MonoBehaviour {
         transform.position = player.transform.position + offset;
         transform.rotation = rotation;
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        Destroy(col.gameObject);
+    }
 }

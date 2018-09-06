@@ -14,7 +14,9 @@ public class Flappy : MonoBehaviour
     public Rigidbody leftRb;
     public Rigidbody rightRb;
 
-    private float forwardSpeed = 1f;
+    public float g;
+    public float forwardSpeed;
+
     private float yaw = 20;
     private float pitch = 1000;
     private float accelResetRate = 0.1f;
@@ -39,7 +41,7 @@ public class Flappy : MonoBehaviour
         leftRb = left.GetComponent<Rigidbody>();
         rightRb = right.GetComponent<Rigidbody>();
 
-        Physics.gravity = 4f * Vector3.down;
+        Physics.gravity = g * Vector3.down;
 
         forwardMovement = forwardSpeed * Vector3.right;
     }

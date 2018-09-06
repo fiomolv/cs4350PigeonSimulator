@@ -15,7 +15,13 @@ ModelImporter:
     2300000: node_id41
     3300000: node_id41
     4300000: node_id41
-  externalObjects: {}
+    6400000: node_id41
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_67
+    second: {fileID: 2100000, guid: 9bce6d1320f12504f886c92fc348ec9b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,9 +52,9 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -70,7 +76,7 @@ ModelImporter:
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1

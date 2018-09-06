@@ -22,8 +22,8 @@ public class Flappy : MonoBehaviour
 
     private Vector3 vertAccel;
     private Vector3 horiAccel;
-    private Vector3 vertAccelChangeRate = 1.5f * Vector3.up;
-    private Vector3 horiAccelChangeRate = 0.2f * Vector3.forward; // Forward was Z
+    private Vector3 vertAccelChangeRate = 1.2f * Vector3.up;
+    private Vector3 horiAccelChangeRate = 0.9f * Vector3.forward; // Forward was Z
     private Vector3 forwardMovement;
 
     private void Start()

@@ -22,7 +22,7 @@ public class Flappy : MonoBehaviour
 
     private Vector3 vertAccel;
     private Vector3 horiAccel;
-    private Vector3 vertAccelChangeRate = 0.5f * Vector3.up;
+    private Vector3 vertAccelChangeRate = 1.5f * Vector3.up;
     private Vector3 horiAccelChangeRate = 0.2f * Vector3.forward; // Forward was Z
     private Vector3 forwardMovement;
 
@@ -49,11 +49,16 @@ public class Flappy : MonoBehaviour
 
         body.transform.Translate(forwardMovement * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+			&& (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
+			// press Left and Right at the same time
+			LiftUp();
+
+		else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             // Left
             LiftLeft();
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             // Right
             LiftRight();
 
@@ -61,6 +66,12 @@ public class Flappy : MonoBehaviour
         UpdatePlayerVelocity();
         UpdateAccels();
     }
+
+	private void LiftUp()
+	{
+		vertAccel = vertAccel + vertAccelChangeRate / 2;
+		body.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
+	}
 
     private void LiftLeft()
     {

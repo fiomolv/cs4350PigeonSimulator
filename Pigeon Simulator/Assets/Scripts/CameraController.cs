@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour {
         transform.rotation = rotation;
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(UnityEngine.Collision col)
     {
         Destroy(col.gameObject);
     }

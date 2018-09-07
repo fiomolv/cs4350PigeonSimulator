@@ -7,30 +7,14 @@ public class TipsController : MonoBehaviour {
     public GameObject player;
     public GameObject[] panels;
 
+
     void Update(){
-        if(player.transform.position.x > 0 && player.transform.position.x < 1)
+        if (panels[0].activeSelf)
         {
-            panels[0].SetActive(true);
-        }
-        if (player.transform.position.x > 1)
+            Time.timeScale = 0;
+        } else
         {
-            panels[0].SetActive(false);
-        }
-        if (player.transform.position.x > 3 && player.transform.position.x < 4)
-        {
-            panels[1].SetActive(true);
-        }
-        if (player.transform.position.x > 4)
-        {
-            panels[1].SetActive(false);
-        }
-        if (player.transform.position.x > 6 && player.transform.position.x < 7)
-        {
-            panels[2].SetActive(true);
-        }
-        if (player.transform.position.x > 7)
-        {
-            panels[2].SetActive(false);
+            Time.timeScale = 1;
         }
     }
 }

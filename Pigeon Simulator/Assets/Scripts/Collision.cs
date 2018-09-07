@@ -8,17 +8,20 @@ public class Collision : MonoBehaviour
 
 	void OnCollisionEnter(UnityEngine.Collision col)
 	{
-		if (col.gameObject.name != "Left" 
-            && col.gameObject.name != "Right"
-            && col.gameObject.name != "Body")
-		{
-			Debug.Log("Collision detected!");
-			Debug.Log(col.gameObject.name);
+        if (col.gameObject.tag != "Player")
+        {
+            Debug.Log("Collision detected!");
+            Debug.Log(col.gameObject.name);
 
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
             PlayerPrefs.SetInt("score", (int)(Time.timeSinceLevelLoad * 5));
 
             SceneManager.LoadScene("Death");
+        }
+        else {
+            Debug.Log("Collision detected!");
+            Debug.Log(col.gameObject.name);
+            Physics.IgnoreCollision(col.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
 	}
 

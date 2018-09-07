@@ -29,12 +29,18 @@ public class Flappy : MonoBehaviour
     private Vector3 forwardMovement;
 
     private void Start()
-    {
+    {   
 
         left = GameObject.Find("Left");
         right = GameObject.Find("Right");
         body = GameObject.Find("Body");
 
+        // Ignore body part collision
+        Physics.IgnoreLayerCollision(gameObject.layer, gameObject.layer);
+
+        Physics.IgnoreCollision(left.GetComponent<Collider>(), right.GetComponent<Collider>());
+        Physics.IgnoreCollision(left.GetComponent<Collider>(), body.GetComponent<Collider>());
+        Physics.IgnoreCollision(body.GetComponent<Collider>(), right.GetComponent<Collider>());
         //camera = body.GetComponent<Camera>();
 
         bodyRb = body.GetComponent<Rigidbody>();

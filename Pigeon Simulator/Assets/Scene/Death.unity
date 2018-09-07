@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -378,8 +378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 266, y: -143.67073}
-  m_SizeDelta: {x: 292, y: 27.341463}
+  m_AnchoredPosition: {x: 385, y: -174.71951}
+  m_SizeDelta: {x: 530, y: 89.439026}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &594078226
 MonoBehaviour:
@@ -432,7 +432,6 @@ GameObject:
   - component: {fileID: 627075659}
   - component: {fileID: 627075658}
   - component: {fileID: 627075657}
-  - component: {fileID: 627075656}
   - component: {fileID: 627075655}
   m_Layer: 5
   m_Name: MainButton
@@ -457,8 +456,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 266, y: -214.68292}
-  m_SizeDelta: {x: 292, y: 2.8780487}
+  m_AnchoredPosition: {x: 385, y: -338.87805}
+  m_SizeDelta: {x: 530, y: 9.414634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &627075655
 MonoBehaviour:
@@ -471,19 +470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84b884a0cf6043f0b840faff04669cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &627075656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 627075653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9be06f7236f343a6b0e5841937fc5b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 250590893}
-  selectedObject: {fileID: 627075653}
 --- !u!114 &627075657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,9 +780,9 @@ GameObject:
   - component: {fileID: 913080105}
   - component: {fileID: 913080108}
   - component: {fileID: 913080107}
+  - component: {fileID: 913080109}
   - component: {fileID: 913080106}
   - component: {fileID: 913080110}
-  - component: {fileID: 913080109}
   m_Layer: 5
   m_Name: RetartButton
   m_TagString: Untagged
@@ -820,8 +806,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 266, y: -201.80487}
-  m_SizeDelta: {x: 292, y: 2.8780487}
+  m_AnchoredPosition: {x: 385, y: -319.4634}
+  m_SizeDelta: {x: 530, y: 9.414634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913080106
 MonoBehaviour:
@@ -968,8 +954,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 266, y: -227.56097}
-  m_SizeDelta: {x: 292, y: 2.8780487}
+  m_AnchoredPosition: {x: 385, y: -358.2927}
+  m_SizeDelta: {x: 530, y: 9.414634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986421793
 MonoBehaviour:
@@ -1242,8 +1228,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 266, y: -178.85365}
-  m_SizeDelta: {x: 292, y: 23.02439}
+  m_AnchoredPosition: {x: 385, y: -267.09756}
+  m_SizeDelta: {x: 530, y: 75.31707}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323180255
 MonoBehaviour:

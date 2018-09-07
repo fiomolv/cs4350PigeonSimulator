@@ -11414,6 +11414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 1974005679}
   selectedObject: {fileID: 877889678}
+  panel: {fileID: 634702255}
 --- !u!114 &634702258
 MonoBehaviour:
   m_ObjectHideFlags: 0

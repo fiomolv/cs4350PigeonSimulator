@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Collision : MonoBehaviour
 {
+    public int layerNumber = 8; // Ignore player layer collision.
+
 
 	void OnCollisionEnter(UnityEngine.Collision col)
 	{
+        Physics.IgnoreLayerCollision(layerNumber, layerNumber);
 		if (col.gameObject.name != "Left" 
             && col.gameObject.name != "Right"
             && col.gameObject.name != "Body")

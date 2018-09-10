@@ -17,6 +17,8 @@ public class Flappy : MonoBehaviour
     public float g;
     public float forwardSpeed;
 
+    public int layerNumber = 8;
+
     private float yaw = 20;
     private float pitch = 1000;
     private float accelResetRate = 0.1f;
@@ -30,12 +32,8 @@ public class Flappy : MonoBehaviour
 
     private void Start()
     {
-
-        left = GameObject.Find("Left");
-        right = GameObject.Find("Right");
-        body = GameObject.Find("Body");
-
         //camera = body.GetComponent<Camera>();
+        Physics.IgnoreLayerCollision(layerNumber, layerNumber);
 
         bodyRb = body.GetComponent<Rigidbody>();
         leftRb = left.GetComponent<Rigidbody>();

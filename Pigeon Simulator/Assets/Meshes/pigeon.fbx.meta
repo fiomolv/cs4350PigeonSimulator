@@ -19,6 +19,9 @@ ModelImporter:
     4300000: Body
     4300002: Right Wing
     4300004: Left Wing
+    6400000: Left Wing
+    6400002: //RootNode
+    6400004: Right Wing
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -52,7 +55,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

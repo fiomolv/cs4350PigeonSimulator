@@ -30,9 +30,11 @@ public class Flappy : MonoBehaviour
     private Vector3 horiAccelChangeRate = 0.9f * Vector3.forward; // Forward was Z
     private Vector3 forwardMovement;
 
+    private Animation leftAnimation;
+    private Animation rightAnimation;
+
     private void Start()
     {
-        //camera = body.GetComponent<Camera>();
         Physics.IgnoreLayerCollision(layerNumber, layerNumber);
 
         bodyRb = body.GetComponent<Rigidbody>();
@@ -42,6 +44,12 @@ public class Flappy : MonoBehaviour
         Physics.gravity = g * Vector3.down;
 
         forwardMovement = forwardSpeed * Vector3.right;
+
+        leftAnimation = left.GetComponent<Animation>();
+        rightAnimation = right.GetComponent<Animation>();
+
+        leftAnimation["Left"].speed = 0.75f;
+        rightAnimation["Right"].speed = 0.75f;
     }
 
     private void Update()
@@ -80,6 +88,8 @@ public class Flappy : MonoBehaviour
         body.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
         body.transform.Rotate(Vector3.right, pitch * Time.deltaTime);
         Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
+
+        leftAnimation.Play(leftAnimation.clip.name);
     }
 
     private void LiftRight()
@@ -89,6 +99,8 @@ public class Flappy : MonoBehaviour
         body.transform.Rotate(Vector3.up, -yaw * Time.deltaTime);
         body.transform.Rotate(Vector3.right, -pitch * Time.deltaTime);
         Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
+
+        rightAnimation.Play(rightAnimation.clip.name);
     }
 
     private void UpdatePlayerVelocity()

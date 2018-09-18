@@ -101,7 +101,12 @@ ModelImporter:
     4300032: Sphere.009
     4300034: Sphere.010
     4300036: Sphere.011
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: b16bb3c23514f8e4f96f8a31910704cd, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -101,6 +101,25 @@ ModelImporter:
     4300032: Sphere.009
     4300034: Sphere.010
     4300036: Sphere.011
+    6400000: Cone
+    6400002: Cube
+    6400004: Cylinder
+    6400006: Cylinder.001
+    6400008: Icosphere
+    6400010: Sphere
+    6400012: Sphere.001
+    6400014: Sphere.002
+    6400016: Sphere.003
+    6400018: Sphere.004
+    6400020: Sphere.005
+    6400022: Sphere.006
+    6400024: Sphere.007
+    6400026: Sphere.008
+    6400028: Sphere.009
+    6400030: Sphere.010
+    6400032: Sphere.011
+    6400034: Torus
+    6400036: Torus.001
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -139,7 +158,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

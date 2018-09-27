@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class TreeFallDown : MonoBehaviour {
 
@@ -9,6 +8,7 @@ public class TreeFallDown : MonoBehaviour {
     public AudioClip audio;
     public int distance;
     public int fallDownSpeed;
+    public int direction;
 
     private bool startFallDown;
     private bool playAudio;
@@ -30,9 +30,13 @@ public class TreeFallDown : MonoBehaviour {
             startFallDown = true;
         }
 
-        if (startFallDown && tree.transform.rotation.z < 0.4)
+        if (startFallDown)
         {
-            tree.transform.Rotate(-Vector3.right * Time.deltaTime * fallDownSpeed, Space.World);
+            if (Math.Abs(tree.transform.rotation.z)< 0.5)
+            {
+                tree.transform.Rotate(Vector3.right * Time.deltaTime * fallDownSpeed * direction, Space.World);
+                tree.transform.Translate(Vector3.up * Time.deltaTime * -3 * direction, Space.World);
+            }
         }
 
         if (!playAudio && startFallDown)

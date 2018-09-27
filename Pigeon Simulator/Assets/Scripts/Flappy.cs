@@ -19,8 +19,8 @@ public class Flappy : MonoBehaviour
 
     public int layerNumber = 8;
 
-    private float yaw = 20;
-    private float pitch = 1000;
+    private float yaw = 200;
+    private float pitch = 800;
     private float accelResetRate = 0.1f;
     private float rotationResetRate = 0.002f;
 
@@ -55,7 +55,8 @@ public class Flappy : MonoBehaviour
     private void Update()
     {
 
-        body.transform.Translate(forwardMovement * Time.deltaTime);
+        //body.transform.Translate(forwardMovement * Time.deltaTime);
+        
 
 		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
 			&& (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
@@ -73,6 +74,8 @@ public class Flappy : MonoBehaviour
         UpdateRotation();
         UpdatePlayerVelocity();
         UpdateAccels();
+
+        transform.position += transform.right * Time.deltaTime * forwardSpeed;
     }
 
 	private void LiftUp()
@@ -85,8 +88,11 @@ public class Flappy : MonoBehaviour
     {
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel + horiAccelChangeRate;
-        body.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
-        body.transform.Rotate(Vector3.right, pitch * Time.deltaTime);
+        float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+        if (angle > -45)
+        {
+            body.transform.Rotate(Vector3.down, pitch * Time.deltaTime);
+        }
         Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
 
         leftAnimation.Play(leftAnimation.clip.name);
@@ -96,8 +102,12 @@ public class Flappy : MonoBehaviour
     {
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel - horiAccelChangeRate;
-        body.transform.Rotate(Vector3.up, -yaw * Time.deltaTime);
-        body.transform.Rotate(Vector3.right, -pitch * Time.deltaTime);
+        
+        float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+        if (angle < 45) {
+            body.transform.Rotate(Vector3.down, -pitch * Time.deltaTime);
+        }
+
         Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
 
         rightAnimation.Play(rightAnimation.clip.name);

@@ -19,8 +19,8 @@ public class Flappy : MonoBehaviour
 
     public int layerNumber = 8;
 
-    private float yaw = 20;
-    private float pitch = 1000;
+    private float yaw = 50;
+    private float pitch = 300;
     private float accelResetRate = 0.1f;
     private float rotationResetRate = 0.002f;
 
@@ -30,8 +30,11 @@ public class Flappy : MonoBehaviour
     private Vector3 horiAccelChangeRate = 0.9f * Vector3.forward; // Forward was Z
     private Vector3 forwardMovement;
 
-    private Animation leftAnimation;
-    private Animation rightAnimation;
+    private Animation anim;
+    private Animation lanim;
+    private Animation ranim;
+    public AnimationClip lb;
+    public AnimationClip rb;
 
     private void Start()
     {
@@ -45,17 +48,13 @@ public class Flappy : MonoBehaviour
 
         forwardMovement = forwardSpeed * Vector3.right;
 
-        leftAnimation = left.GetComponent<Animation>();
-        rightAnimation = right.GetComponent<Animation>();
-
-        leftAnimation["Left"].speed = 0.75f;
-        rightAnimation["Right"].speed = 0.75f;
+        anim = body.GetComponent<Animation>();
+        lanim = left.GetComponent<Animation>();
+        ranim = right.GetComponent<Animation>();
     }
 
     private void Update()
     {
-
-        body.transform.Translate(forwardMovement * Time.deltaTime);
 
 		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
 			&& (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
@@ -73,34 +72,44 @@ public class Flappy : MonoBehaviour
         UpdateRotation();
         UpdatePlayerVelocity();
         UpdateAccels();
+
+        transform.position += transform.right * Time.deltaTime * forwardSpeed;
     }
 
 	private void LiftUp()
 	{
 		vertAccel = vertAccel + vertAccelChangeRate / 2;
-		body.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
+		transform.Rotate(Vector3.up, yaw * Time.deltaTime);
 	}
 
     private void LiftLeft()
     {
+        lanim.Play(lanim.clip.name);
+        anim.Play(lb.name);
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel + horiAccelChangeRate;
-        body.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
-        body.transform.Rotate(Vector3.right, pitch * Time.deltaTime);
-        Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
+        float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+        if (angle > -35)
+        {
+            transform.Rotate(Vector3.down, pitch * Time.deltaTime);
+        }
 
-        leftAnimation.Play(leftAnimation.clip.name);
+        Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
     }
 
     private void LiftRight()
     {
+        ranim.Play(ranim.clip.name);
+        anim.Play(rb.name);
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel - horiAccelChangeRate;
-        body.transform.Rotate(Vector3.up, -yaw * Time.deltaTime);
-        body.transform.Rotate(Vector3.right, -pitch * Time.deltaTime);
-        Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
 
-        rightAnimation.Play(rightAnimation.clip.name);
+        float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+        if (angle < 35) {
+            transform.Rotate(Vector3.down, -pitch * Time.deltaTime);
+        }
+        
+        Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
     }
 
     private void UpdatePlayerVelocity()
@@ -119,8 +128,8 @@ public class Flappy : MonoBehaviour
 
     private void UpdateRotation()
     {
-        float rotationValue = pitch * rotationResetRate * (body.transform.rotation.x % 360);
-        body.transform.Rotate(Vector3.right, -rotationValue);
+        float rotationValue = pitch * rotationResetRate * (transform.rotation.x % 360);
+        transform.Rotate(Vector3.right, -rotationValue);
         Camera.main.transform.Rotate(Vector3.forward, rotationValue);
     }
 
@@ -129,5 +138,4 @@ public class Flappy : MonoBehaviour
     {
         rb.velocity = rb.velocity + accel;
     }
-
 }

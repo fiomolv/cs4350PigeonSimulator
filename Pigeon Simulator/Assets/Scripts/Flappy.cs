@@ -84,12 +84,12 @@ public class Flappy : MonoBehaviour
 
     private void LiftLeft()
     {
-        anim.Play(lb.name);
         lanim.Play(lanim.clip.name);
+        anim.Play(lb.name);
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel + horiAccelChangeRate;
         float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
-        if (angle > -45)
+        if (angle > -35)
         {
             transform.Rotate(Vector3.down, pitch * Time.deltaTime);
         }
@@ -99,13 +99,13 @@ public class Flappy : MonoBehaviour
 
     private void LiftRight()
     {
-        anim.Play(rb.name);
         ranim.Play(ranim.clip.name);
+        anim.Play(rb.name);
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel - horiAccelChangeRate;
 
         float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
-        if (angle < 45) {
+        if (angle < 35) {
             transform.Rotate(Vector3.down, -pitch * Time.deltaTime);
         }
         

@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class Collision : MonoBehaviour
 {
     public int layerNumber = 8; // Ignore player layer collision.
+	public AudioClip hit;
+	AudioSource audioSource;
 
+	void Start()
+	{
+		audioSource = GetComponent<AudioSource>();
+	}
 
 	void OnCollisionEnter(UnityEngine.Collision col)
 	{
@@ -20,8 +26,8 @@ public class Collision : MonoBehaviour
 
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
             PlayerPrefs.SetInt("score", (int)(Time.timeSinceLevelLoad * 5));
-
-            SceneManager.LoadScene("Death");
+			audioSource.Play();
+			SceneManager.LoadScene("Death");
         }
 	}
 

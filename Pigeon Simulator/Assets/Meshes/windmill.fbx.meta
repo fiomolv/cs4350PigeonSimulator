@@ -21,6 +21,8 @@ ModelImporter:
     3300002: //RootNode
     4300000: windmill_body
     4300002: fan
+    6400000: fan
+    6400002: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -54,7 +56,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

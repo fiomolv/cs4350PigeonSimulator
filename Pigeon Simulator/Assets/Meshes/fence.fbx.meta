@@ -41,6 +41,12 @@ ModelImporter:
     4300006: Cube.004
     4300008: Cube.003
     4300010: Cube.005
+    6400000: Cube
+    6400002: Cube.001
+    6400004: Cube.002
+    6400006: Cube.003
+    6400008: Cube.004
+    6400010: Cube.005
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -104,7 +110,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

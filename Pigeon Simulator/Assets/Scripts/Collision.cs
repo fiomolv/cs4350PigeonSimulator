@@ -26,8 +26,18 @@ public class Collision : MonoBehaviour
 			Debug.Log(col.gameObject.name);
 
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
-            PlayerPrefs.SetInt("score", (int)(Time.timeSinceLevelLoad * 5));
+
+			int currentScore = (int)(Time.timeSinceLevelLoad * 5);
+			PlayerPrefs.SetInt("score", currentScore);
+
+			// set highest score
+			if (currentScore > PlayerPrefs.GetInt("highest", 0))
+				PlayerPrefs.SetInt("highest", currentScore);
+
+			// play hit audio
 			audioSource.Play();
+	
+			// load death scene
 			SceneManager.LoadScene("Death");
         }
 	}

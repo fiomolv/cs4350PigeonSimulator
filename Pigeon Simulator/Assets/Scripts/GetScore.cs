@@ -11,10 +11,12 @@ public class GetScore : MonoBehaviour {
 	void Start () {
         if (SceneManager.GetActiveScene().name.Equals("Death"))
         {
-            score.text = "Score: " + PlayerPrefs.GetInt("score");
-        } else {
+			score.text = "Score: " + PlayerPrefs.GetInt("score");
+		} else {
             score.text = "Score: 0";
-        }
+
+		}
+		
     }
 
     void Update()

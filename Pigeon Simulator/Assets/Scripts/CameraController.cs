@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour {
         rotation = transform.rotation;
     }
     
-    void LateUpdate ()
+    void Update ()
     {
         transform.position = player.transform.position + offset;
         transform.rotation = rotation;

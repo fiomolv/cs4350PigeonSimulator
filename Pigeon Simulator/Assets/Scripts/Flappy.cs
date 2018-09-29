@@ -20,7 +20,7 @@ public class Flappy : MonoBehaviour
     public int layerNumber = 8;
 
     private float yaw = 50;
-    private float pitch = 300;
+    private float pitch = 350;
     private float accelResetRate = 0.1f;
     private float rotationResetRate = 0.002f;
 
@@ -40,9 +40,9 @@ public class Flappy : MonoBehaviour
     {
         Physics.IgnoreLayerCollision(layerNumber, layerNumber);
 
-        bodyRb = body.GetComponent<Rigidbody>();
-        leftRb = left.GetComponent<Rigidbody>();
-        rightRb = right.GetComponent<Rigidbody>();
+        bodyRb = gameObject.GetComponent<Rigidbody>();
+        //leftRb = left.GetComponent<Rigidbody>();
+        //rightRb = right.GetComponent<Rigidbody>();
 
         Physics.gravity = g * Vector3.down;
 
@@ -69,17 +69,17 @@ public class Flappy : MonoBehaviour
             // Right
             LiftRight();
 
-        UpdateRotation();
+        //UpdateRotation();
         UpdatePlayerVelocity();
         UpdateAccels();
 
-        transform.position += transform.right * Time.deltaTime * forwardSpeed;
+        gameObject.transform.position += gameObject.transform.right * Time.deltaTime * forwardSpeed;
     }
 
 	private void LiftUp()
 	{
 		vertAccel = vertAccel + vertAccelChangeRate / 2;
-		transform.Rotate(Vector3.up, yaw * Time.deltaTime);
+        gameObject.transform.Rotate(Vector3.up, yaw * Time.deltaTime);
 	}
 
     private void LiftLeft()
@@ -88,13 +88,13 @@ public class Flappy : MonoBehaviour
         anim.Play(lb.name);
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel + horiAccelChangeRate;
-        float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+        float angle = Vector3.SignedAngle(Vector3.forward, gameObject.transform.forward, Vector3.up);
         if (angle > -35)
         {
-            transform.Rotate(Vector3.down, pitch * Time.deltaTime);
+            gameObject.transform.Rotate(transform.up, -pitch * Time.deltaTime);
         }
 
-        Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
+        //Camera.main.transform.Rotate(Vector3.forward, -pitch * Time.deltaTime);
     }
 
     private void LiftRight()
@@ -104,20 +104,20 @@ public class Flappy : MonoBehaviour
         vertAccel = vertAccel + vertAccelChangeRate;
         horiAccel = horiAccel - horiAccelChangeRate;
 
-        float angle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+        float angle = Vector3.SignedAngle(Vector3.forward, gameObject.transform.forward, Vector3.up);
         if (angle < 35) {
-            transform.Rotate(Vector3.down, -pitch * Time.deltaTime);
+            gameObject.transform.Rotate(transform.up, pitch * Time.deltaTime);
         }
         
-        Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
+        //Camera.main.transform.Rotate(Vector3.forward, pitch * Time.deltaTime);
     }
 
     private void UpdatePlayerVelocity()
     {
         Vector3 compoundAccel = vertAccel + horiAccel;
         VelocityChange(bodyRb, compoundAccel);
-        VelocityChange(leftRb, compoundAccel);
-        VelocityChange(rightRb, compoundAccel);
+        //VelocityChange(leftRb, compoundAccel);
+        //VelocityChange(rightRb, compoundAccel);
     }
 
     private void UpdateAccels()
@@ -128,8 +128,8 @@ public class Flappy : MonoBehaviour
 
     private void UpdateRotation()
     {
-        float rotationValue = pitch * rotationResetRate * (transform.rotation.x % 360);
-        transform.Rotate(Vector3.right, -rotationValue);
+        float rotationValue = pitch * rotationResetRate * (gameObject.transform.rotation.x % 360);
+        gameObject.transform.Rotate(Vector3.right, -rotationValue);
         Camera.main.transform.Rotate(Vector3.forward, rotationValue);
     }
 

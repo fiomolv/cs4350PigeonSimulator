@@ -15,27 +15,47 @@ public class SpawnerController : MonoBehaviour {
     public bool stop;
 
     private int randEnemy;
-
-    private Vector3 offset;
+    private float forestoffset = 275f;
+    private float offsetx;
     private Quaternion rotation;
+    private float initx;
 
     // Use this for initialization
     void Start()
     {
-        offset = transform.position - player.transform.position;
-        rotation = transform.rotation;
-
-        StartCoroutine(waitSpawner());
+        offsetx = transform.position.x - player.transform.position.x;
+        initx = transform.position.x;
+        //rotation = transform.rotation;
+        SpawnForest();
+        //StartCoroutine(waitSpawner());
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
-        transform.rotation = rotation;
-
-        spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
+        transform.position = new Vector3(player.transform.position.x + offsetx, 
+                                         transform.position.y, 
+                                         transform.position.z);
+        if (transform.position.x - initx > forestoffset) {
+            initx = transform.position.x;
+            SpawnForest();
+        }
     }
+
+    void SpawnForest() {
+        Vector3 spawnPosition = new Vector3(forestoffset,
+                                                0,
+                                                0);
+        Quaternion rot = Quaternion.Euler(0, 180, 0);
+
+        if (Random.Range(0, 1) > 0.5)
+        {
+            rot = Quaternion.Euler(0, 0, 0);
+        }
+
+        Instantiate(enemies[randEnemy], spawnPosition + gameObject.transform.position, rot);
+    }
+
 
     IEnumerator waitSpawner()
     {
@@ -43,12 +63,17 @@ public class SpawnerController : MonoBehaviour {
 
         while (!stop)
         {
-            randEnemy = Random.Range(0, enemies.Length);
-            Vector3 spawnPosition = new Vector3(Random.Range(0, spawnValues.x),
-                                                Random.Range(-spawnValues.y, spawnValues.y),
-                                                Random.Range(-spawnValues.z, spawnValues.z));
-            Instantiate(enemies[randEnemy], spawnPosition + gameObject.transform.position,
-                gameObject.transform.rotation);
+
+            Vector3 spawnPosition = new Vector3(gameObject.transform.position.x + forestoffset,
+                                                0,
+                                                0);
+            Quaternion rot = Quaternion.Euler(0, 180, 0);
+
+            if (Random.Range(0, 1) > 0.5) {
+                rot = Quaternion.Euler(0, 0, 0);
+            }
+
+            Instantiate(enemies[randEnemy], spawnPosition + gameObject.transform.position, rot);
             yield return new WaitForSeconds(spawnWait);
         }
     }

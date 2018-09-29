@@ -19,7 +19,8 @@ public class Collision : MonoBehaviour
         Physics.IgnoreLayerCollision(layerNumber, layerNumber);
 		if (col.gameObject.name != "Left" 
             && col.gameObject.name != "Right"
-            && col.gameObject.name != "Body")
+            && col.gameObject.name != "Body"
+            && col.gameObject.name != "Player")
 		{
 			Debug.Log("Collision detected!");
 			Debug.Log(col.gameObject.name);

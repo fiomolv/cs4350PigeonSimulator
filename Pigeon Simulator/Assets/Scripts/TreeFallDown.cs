@@ -25,7 +25,7 @@ public class TreeFallDown : MonoBehaviour {
     }
 
 	void Update () {
-		if(!startFallDown && body.transform.position.x > tree.transform.position.x - distance)
+        if (!startFallDown && body.transform.position.x > tree.transform.position.x - distance)
         {
             startFallDown = true;
         }

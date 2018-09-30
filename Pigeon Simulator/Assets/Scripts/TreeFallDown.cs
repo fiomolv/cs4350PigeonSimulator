@@ -22,6 +22,7 @@ public class TreeFallDown : MonoBehaviour {
         audioSource = (AudioSource)tree.AddComponent<AudioSource>();
         audioSource.clip = audio;
         audioSource.loop = false;
+        audioSource.playOnAwake = false;
     }
 
 	void Update () {

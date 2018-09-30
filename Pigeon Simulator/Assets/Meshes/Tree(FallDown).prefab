@@ -462,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 0}
   tree: {fileID: 1073116680498588}
-  audio: {fileID: 8300000, guid: 1719362322ff9fa44a82e7574a8753cd, type: 3}
+  audio: {fileID: 8300000, guid: 4660db549fd346048b77bb591ffafe96, type: 3}
   distance: 40
   fallDownSpeed: 40
+  direction: 0

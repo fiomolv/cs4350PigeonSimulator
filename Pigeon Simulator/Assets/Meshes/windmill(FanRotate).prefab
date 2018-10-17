@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33350013751723906}
   - component: {fileID: 23359803826683454}
   - component: {fileID: 114742600746034680}
+  - component: {fileID: 64316094614896656}
   m_Layer: 0
   m_Name: windmill(FanRotate)
   m_TagString: Untagged
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 4073944347963956}
   - component: {fileID: 33230177667735730}
   - component: {fileID: 23101394805805574}
+  - component: {fileID: 64268525035084306}
   m_Layer: 0
   m_Name: fan
   m_TagString: Untagged
@@ -237,6 +239,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550673524228688}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &64268525035084306
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1248341369224958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 505f86b54b71f484092e6d0909613a00, type: 3}
+--- !u!64 &64316094614896656
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238764110138996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 505f86b54b71f484092e6d0909613a00, type: 3}
 --- !u!114 &114742600746034680
 MonoBehaviour:
   m_ObjectHideFlags: 1

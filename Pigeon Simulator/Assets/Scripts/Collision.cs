@@ -17,7 +17,10 @@ public class Collision : MonoBehaviour
 	void OnCollisionEnter(UnityEngine.Collision col)
 	{
         Physics.IgnoreLayerCollision(layerNumber, layerNumber);
-		if (col.gameObject.name != "Left" 
+        if (col.gameObject.name == "Soup") {
+            SceneManager.LoadScene("Endpage");
+        }
+		else if (col.gameObject.name != "Left" 
             && col.gameObject.name != "Right"
             && col.gameObject.name != "Body"
             && col.gameObject.name != "Player")

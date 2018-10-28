@@ -10,6 +10,9 @@ public class Flappy : MonoBehaviour
 
     public GameObject body;
 
+    public GameObject pot;
+    public GameObject window;
+
     public Rigidbody bodyRb;
     public Rigidbody leftRb;
     public Rigidbody rightRb;
@@ -55,25 +58,32 @@ public class Flappy : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.x < window.transform.position.x) {
+            if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
+                // press Left and Right at the same time
+                LiftUp();
 
-		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-			&& (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
-			// press Left and Right at the same time
-			LiftUp();
+            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                // Left
+                LiftLeft();
 
-		else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            // Left
-            LiftLeft();
+            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                // Right
+                LiftRight();
 
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            // Right
-            LiftRight();
+            //UpdateRotation();
+            UpdatePlayerVelocity();
+            UpdateAccels();
 
-        //UpdateRotation();
-        UpdatePlayerVelocity();
-        UpdateAccels();
+            gameObject.transform.position += gameObject.transform.right * Time.deltaTime * forwardSpeed;
+        }
+        else {
+            UpdatePlayerVelocity();
+            UpdateAccels();
 
-        gameObject.transform.position += gameObject.transform.right * Time.deltaTime * forwardSpeed;
+            gameObject.transform.position += gameObject.transform.right * Time.deltaTime * forwardSpeed;
+        }
     }
 
 	private void LiftUp()

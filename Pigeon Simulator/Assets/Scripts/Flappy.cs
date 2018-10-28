@@ -82,6 +82,8 @@ public class Flappy : MonoBehaviour
             UpdatePlayerVelocity();
             UpdateAccels();
 
+            gameObject.transform.Rotate(transform.forward, -30 * Time.deltaTime);
+            //Camera.main.transform.Rotate(Vector3.forward, 40 * Time.deltaTime);
             gameObject.transform.position += gameObject.transform.right * Time.deltaTime * forwardSpeed;
         }
     }

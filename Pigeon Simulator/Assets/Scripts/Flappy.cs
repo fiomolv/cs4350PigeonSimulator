@@ -79,7 +79,8 @@ public class Flappy : MonoBehaviour
             gameObject.transform.position += gameObject.transform.right * Time.deltaTime * forwardSpeed;
         }
         else {
-            UpdatePlayerVelocity();
+			PlayerPrefs.SetInt("highest", 0); // reset history record 
+			UpdatePlayerVelocity();
             UpdateAccels();
 
             gameObject.transform.Rotate(transform.forward, -30 * Time.deltaTime);

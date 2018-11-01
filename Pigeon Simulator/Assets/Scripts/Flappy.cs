@@ -39,13 +39,13 @@ public class Flappy : MonoBehaviour
     public AnimationClip lb;
     public AnimationClip rb;
 
+    // public bool tooHigh = false;
+
     private void Start()
     {
         Physics.IgnoreLayerCollision(layerNumber, layerNumber);
 
         bodyRb = gameObject.GetComponent<Rigidbody>();
-        //leftRb = left.GetComponent<Rigidbody>();
-        //rightRb = right.GetComponent<Rigidbody>();
 
         Physics.gravity = g * Vector3.down;
 
@@ -58,15 +58,15 @@ public class Flappy : MonoBehaviour
 
     private void Update()
     {
+        if (gameObject.transform.position.y > 6.5) // too high
+        {
+            g = 1.2f * g;
+        }
+        else {
+            g = 8;
+        }
         if (transform.position.x < window.transform.position.x) {
-            if (gameObject.transform.position.y > 7.5) { // too high
-                // Increase G?
-                // Play anim?
-                // Load scene
-            }
             
-            
-
             if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
                 // press Left and Right at the same time

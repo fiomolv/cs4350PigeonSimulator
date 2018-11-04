@@ -35,7 +35,11 @@ public class Collision : MonoBehaviour
 
 			// set highest score
 			if (currentScore > PlayerPrefs.GetInt("highest", 0))
+			{
+				PlayerPrefs.SetInt("isNewRecord", 1);
+				Debug.Log("update isNewRecord");
 				PlayerPrefs.SetInt("highest", currentScore);
+			}
 
 			// play hit audio
 			audioSource.Play();

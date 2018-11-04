@@ -7,6 +7,7 @@ public class highestScore : MonoBehaviour {
 
 	// Use this for initialization
 	public Text highest;
+
 	void Start () {
 		highest.text = "Histroy Record: " + PlayerPrefs.GetInt("highest", 0);
 

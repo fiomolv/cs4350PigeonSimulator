@@ -39,6 +39,9 @@ public class Flappy : MonoBehaviour
     public AnimationClip lb;
     public AnimationClip rb;
 
+    public GameObject TooLow;
+   // public 
+
     // public bool tooHigh = false;
 
     private void Start()
@@ -66,7 +69,17 @@ public class Flappy : MonoBehaviour
             g = 8;
         }
         if (transform.position.x < window.transform.position.x) {
-            
+
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(transform.position, -Vector3.up, out hit) && hit.distance < 1.0f)
+            {
+                Debug.Log("Too Low");
+                TooLow.SetActive(true);
+            }
+            else {
+                TooLow.SetActive(false);
+            }
+
             if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)))
                 // press Left and Right at the same time

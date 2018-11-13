@@ -19,7 +19,7 @@ Player controls a pigeon to experience the danger and beauty of the world. Playe
 ![screenshot 3](https://github.com/fiomolv/cs4350PigeonSimulator/blob/master/Screenshots/Screenshot4.png)
 
 
-**[Click to download the game](https://github.com/fiomolv/cs4350PigeonSimulator/releases)**  (Latest version: v3.1)
+**[Click to download the game](https://github.com/fiomolv/cs4350PigeonSimulator/releases)**  
 
 
 

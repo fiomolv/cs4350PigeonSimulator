@@ -61,9 +61,9 @@ public class Flappy : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject.transform.position.y > 6.5) // too high
+        if (gameObject.transform.position.y > 6.2) // too high
         {
-            g = 1.2f * g;
+            g = 100f * g;
         }
         else {
             g = 8;
